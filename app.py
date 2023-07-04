@@ -64,7 +64,7 @@ def invite():
     resp = requests.post(
         'https://discordapp.com/api/channels/%s/invites' % config["discord"]["welcome_room"], 
         headers={'Authorization': 'Bot %s' % config["discord"]["private"]},
-        json={'max_uses': 1, 'unique': True, 'expires': 300}
+        json={'max_uses': 1, 'unique': True, 'max_age': 120}
     )
     i = resp.json()
     return i["code"]
